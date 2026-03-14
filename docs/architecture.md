@@ -1,29 +1,23 @@
 # GitHub Events Batch ETL Pipeline Architecture
 
-Source
-GitHub Public Events API
+flowchart LR
 
-Ingestion Layer
-Python script fetch_github_events.py fetches events from the API.
+A[GitHub Public Events API]
 
-Storage Layer
-PostgreSQL table raw_github_events stores raw event data.
+B[Python Ingestion Script
+fetch_github_events.py]
 
-Transformation Layer
-SQL queries generate analytics tables.
+C[(PostgreSQL Table
+raw_github_events)]
 
-Analytics Tables
-event_type_summary
-repo_activity_summary
+D[SQL Transformations]
 
-Pipeline Flow
+E[event_type_summary]
 
-GitHub API
-      ↓
-Python Ingestion Script
-      ↓
-raw_github_events (PostgreSQL)
-      ↓
-SQL Transformations
-      ↓
-Analytics Tables
+F[repo_activity_summary]
+
+A --> B
+B --> C
+C --> D
+D --> E
+D --> F
